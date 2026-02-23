@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sur-Sync</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar glass">
+        <div class="logo">
+            <img src="logo.jpeg" alt="logo" ><h1>Sur-<span>Sync</span></h1></div>
+        <nav>
+            <div class="nav-item active" data-section="scale-explorer">Scale Explorer</div>
+            <div class="nav-item" data-section="chord-lab">Chord Lab</div>
+            <div class="nav-item" data-section="practice-suite">Practice Suite</div>
+        </nav>
+    </aside>
+
+    <!-- Dashboard -->
+    <main class="dashboard">
+        <!-- SCALE EXPLORER -->
+        <section id="scale-explorer" class="section active">
+            <header class="control-bar glass">
+                <div class="search-group">
+                    <input type="text" id="root-input" placeholder="Note (C, F#...)">
+                    <select id="scale-type">
+                        <option value="major">Major</option>
+                        <option value="minor">Minor</option>
+                        <option value="dorian">Dorian</option>
+                        <option value="majPent">Major Pentatonic</option>
+                        <option value="minPent">Minor Pentatonic</option>
+                    </select>
+                    <select id="note-display">
+                        <option value="western">Western</option>
+                        <option value="classical">Classical</option>
+                    </select>
+                    <button id="generate-btn">Generate</button>
+                </div>
+                <div class="theory-summary">
+                    <span id="scale-display">C Major Scale</span>
+                </div>
+            </header>
+            <section class="visualizer-space">
+                <div id="piano-wrapper" class="glass"></div>
+            </section>
+            <section class="info-grid">
+                <div class="card glass">
+                    <h3>Scale Notes</h3>
+                    <div id="notes-list" class="notes-output">C D E F G A B C</div>
+                </div>
+                <div class="card glass">
+                    <h3>Diatonic Chords</h3>
+                    <div id="chords-list" class="chords-output">C, Dm, Em, F, G, Am, Bdim</div>
+                </div>
+            </section>
+        </section>
+
+        <!-- CHORD LAB -->
+         
+        <section id="chord-lab" class="section">
+            <header class="control-bar glass">
+                <select id="chord-instrument">
+                    <option value="piano">Piano</option>
+                    <option value="guitar" id="onlyGuitar">Guitar</option>
+                </select>
+                <button id="generate-chords-btn">Show Diatonic Chords</button>
+            </header>
+            <div id="chord-chart-container" class="chord-chart glass"></div>
+        </section>
+
+        <!-- PRACTICE SUITE -->
+        
+<section id="practice-suite" class="section">
+    <header class="control-bar glass">
+        <label for="bpm">BPM:</label>
+        <input type="range" id="bpm" min="40" max="220" value="120">
+        <span id="bpm-display">120</span>
+
+        <label for="time-signature">Time Signature:</label>
+        <select id="time-signature">
+            <option value="4">4/4</option>
+            <option value="3">3/4</option>
+            <option value="5">5/4</option>
+            <option value="6">6/8</option>
+        </select>
+
+        <button id="start-metronome">Start</button>
+        <button id="stop-metronome">Stop</button>
+        <button id="play-scale-btn">Play Scale</button>
+    </header>
+
+    <div id="practice-container"  class="glass">
+        <!-- Metronome flash and beat circles -->
+        <div id="metronome-flash"></div>
+
+        <div id="beat-indicator" style="display:flex; justify-content:center; gap:15px; margin:10px 0 ;">
+            <div class="beat-circle" data-beat="0">1</div>
+            <div class="beat-circle" data-beat="1">2</div>
+            <div class="beat-circle" data-beat="2">3</div>
+            <div class="beat-circle" data-beat="3">4</div>
+        </div>
+
+        <p id="now-playing">Not Playing</p>
+
+        <!-- Diatonic Progression -->
+         <section >
+      <DIV id="progression-section"  style="margin-top: 20px;">
+        <h4>Select the Progressions</h4>
+        <select id="progression-select">
+            <option value="I-IV-V-I">I – V – VI – IV </option>
+            <option value="I-V-vi-IV">I – VI – IV – V</option>
+            <option value="ii-V-I-vi">I – V – I – VI</option>
+            <option value="custom">Custom</option>
+        </select>
+
+        <div id="custom-selectors" style="margin-top:10px;">
+                
+            <select id="c1">
+                <option value="0">I</option>
+                <option value="1">ii</option>
+                <option value="2">iii</option>
+                <option value="3">IV</option>
+                <option value="4">V</option>
+                <option value="5">vi</option>
+                <option value="6">vii°</option>
+            </select>
+
+            <select id="c2">
+                <option value="0">I</option>
+                <option value="1">ii</option>
+                <option value="2">iii</option>
+                <option value="3">IV</option>
+                <option value="4">V</option>
+                <option value="5">vi</option>
+                <option value="6">vii°</option>
+            </select>
+
+            <select id="c3">
+                <option value="0">I</option>
+                <option value="1">ii</option>
+                <option value="2">iii</option>
+                <option value="3">IV</option>
+                <option value="4">V</option>
+                <option value="5">vi</option>
+                <option value="6">vii°</option>
+            </select>
+
+            <select id="c4">
+                <option value="0">I</option>
+                <option value="1">ii</option>
+                <option value="2">iii</option>
+                <option value="3">IV</option>
+                <option value="4">V</option>
+                <option value="5">vi</option>
+                <option value="6">vii°</option>
+            </select>
+        </div>
+        <h4>Select the Instrument</h4>
+        <select id="instrument-select" style="margin-top:15px;">
+        <option value="piano">Piano</option>
+        <option value="guitar">Guitar</option>
+    </select>
+        <button id="generate-progression-btn" style="margin-top:15px;">Generate Progression</button>
+        </div>
+
+        <div id="progression-output"  class="progression-grid"></div>
+    
+    </DIV> 
+</section>
+
+    </main>
+</div>
+
+<script src="app.js"></script>
+<script src="chordLab.js"></script>
+<script src="practiceSuite.js"></script>
+<script src="audio.js"></script>
+</body>
+</html>
