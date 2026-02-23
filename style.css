@@ -118,6 +118,9 @@ button:hover {
     margin:10px 0;
     padding-bottom:10px;
 }
+#right::-webkit-scrollbar{
+    display: none;
+}
 
 .key {
     flex-shrink:0;
